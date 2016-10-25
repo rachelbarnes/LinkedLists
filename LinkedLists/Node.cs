@@ -33,14 +33,34 @@ namespace LinkedLists {
             }
             return value.ToString();
         } */
-
-        //This was Steve's suggested code
-        public string ToString() {
+        public string ToString() { //Steve's suggested code
             if (next == null) {
                 return value.ToString();
             }
             return value.ToString() + " -> " + next.ToString();
         }
+
+        //static bool Compare<T> (T x, T y) where T : class {
+        //    return x == y; 
+        //}
+
+        //public static bool operator == (Node<T> a, Node<T> b) {
+        //    return a.Equals(b); 
+        //}
+        //public static bool operator != (Node<T> a, Node<T> b) {
+        //    return (!a.Equals(b)); 
+        //}
+        //public Node<T> ListToLinkedList(List<T> list) {
+        //    Node<T> LL;
+        //    var count = list.Count(); 
+        //    for (int i = 0; i < count; i++) {
+        //        if (list[i] == list[count])
+        //    }
+        //    //var listArr = list.Split(' '); 
+        //    //while (listArr != null) {
+        //    //    LL = 
+        //    //}
+        //}
     }
 
     public class DoubleNode<T> {
@@ -76,6 +96,7 @@ namespace LinkedLists {
         }
         //why did I have to override this DoubleNode<T>.ToString() and not Node<T>.ToString()? they're in different classes?
         // Is the DoubleNode<T>.ToString() overriding the Node<T>? 
+
     }
 
     [TestFixture]
