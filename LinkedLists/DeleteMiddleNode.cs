@@ -13,19 +13,17 @@ namespace LinkedLists {
 
         So delete that node without calling functionality from any node around them? It has to be that independent node?  
         */
+
         public DoubleNode<char> DeleteMidNode(DoubleNode<char> n, char deleteMe) {
-            while (n.next != null) {
-                var current = n.value;
-                var currentNext = n.next; 
-                if (n.value != deleteMe) {
-                    current = n.value;
-                    currentNext = n.next; 
+            var current = n;
+            while (current != null) {
+                if ((current.value == deleteMe) && (current.previous != null)) {
+                    current.previous = current.next.next;
+                    //need to talk to Steve... this is weird. the previous for all of my nodes is 'e', as well as .next.next... 
+                    //this is bringing me back the whole linked list still, despite me trying to rearrange these values
+                    current.next = current.previous.previous;
                 }
-                if (currentNext.value == deleteMe) { //and now, i have an infinite loop... is it always evalutaitng 'a'? 
-                                           //why won't it proceed to b, it's attached to a... 
-                    n.previous = n.next.next;
-                    n.next = n.previous.previous;
-                }
+                current = current.next;
             }
             return n;
         }

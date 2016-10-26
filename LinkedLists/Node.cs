@@ -39,7 +39,6 @@ namespace LinkedLists {
             }
             return value.ToString() + " -> " + next.ToString();
         }
-
         //static bool Compare<T> (T x, T y) where T : class {
         //    return x == y; 
         //}
@@ -73,30 +72,18 @@ namespace LinkedLists {
         public DoubleNode(T _value) {
             value = _value; 
         }
-        //public DoubleNode(DoubleNode<T> _previous, T _value, DoubleNode<T> _next) {
-        //    previous = _previous;
-        //    value = _value;
-        //    next = _next;
-        //}
-        //i don't see a need for this method to be any different from the method, you're still counting the nodes in the linked list, which 
-        //having a link to the previous node makes no difference on how many there are
         public int Count() {
             if (next != null) {
                 return 1 + next.Count();
             }
             return 1;
         }
-
         public override string ToString() {
-            if (next == null) { //I had if (next == null || previous == null), 
-                    //but if we're only "writing" this one way (in this case, from left to right), then it shouldn't matter if the previous is null. The head is the head. 
+            if (next == null) { 
                 return value.ToString(); 
             }
             return value.ToString() + " <-> " + next.ToString(); 
         }
-        //why did I have to override this DoubleNode<T>.ToString() and not Node<T>.ToString()? they're in different classes?
-        // Is the DoubleNode<T>.ToString() overriding the Node<T>? 
-
     }
 
     [TestFixture]

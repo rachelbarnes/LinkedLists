@@ -50,7 +50,7 @@ namespace LinkedLists {
                 n = n.next;
             }
             return n.ToString();
-        }
+        } //oddly enough, i was working on this one the whole time i was doing this question/algorithm, and the one above works? 
     }
     [TestFixture]
     public class TestRemovingDuplicateNodes {
