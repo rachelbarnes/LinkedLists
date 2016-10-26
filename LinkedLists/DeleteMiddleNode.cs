@@ -10,18 +10,14 @@ namespace LinkedLists {
         /*
         Implement an algorithm to delete a node in the middle (i.e any node but the first and the and lsat node, not necessarily exact middle) 
             of a singly linked list, given only access to that node. 
-
-        So delete that node without calling functionality from any node around them? It has to be that independent node?  
         */
 
-        public DoubleNode<char> DeleteMidNode(DoubleNode<char> n, char deleteMe) {
+        public DoubleNode<char> DeleteMidNode(DoubleNode<char> n, char k) {
             var current = n;
             while (current != null) {
-                if ((current.value == deleteMe) && (current.previous != null)) {
-                    current.previous = current.next.next;
-                    //need to talk to Steve... this is weird. the previous for all of my nodes is 'e', as well as .next.next... 
-                    //this is bringing me back the whole linked list still, despite me trying to rearrange these values
-                    current.next = current.previous.previous;
+                if (current.value == k) {
+                    current.previous.next = current.next;
+                    current.next.previous = current.previous; 
                 }
                 current = current.next;
             }

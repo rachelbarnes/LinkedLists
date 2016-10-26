@@ -19,15 +19,6 @@ namespace LinkedLists {
                     return alternateNode;
                 }
                 currentNode = currentNode.next; 
-                //if (currentNode.next != null) {
-                //    currentNode = currentNode.next;
-                //    if (alternateNode != null) { 
-                //        alternateNode = currentNode;
-                //    }
-                //}
-                //if (currentNode.next == null) {
-                //    return alternateNode;
-                //}
             }
             return alternateNode;
         }
@@ -55,6 +46,8 @@ namespace LinkedLists {
         }
         public Func<DoubleNode<char>, string> MyLinkedListString = n => n.ToString();
 
+        //this test is not passing, although the expected and the actual are the same in the TestExplorer...
+            //is it the issue of comparing two different objects not being exactly equal? 
         [Test]
         public void ReturnPartOfALinkedListTest() {
             var remove = new ReturnKthToLast();
@@ -71,23 +64,6 @@ namespace LinkedLists {
             var actual = remove.ReturnNodes(MyLinkedList(), 'c');
             Assert.AreEqual(expected, actual);
         }
-
-        //[Test]
-        //public void ReturnHalfofaLinkedListStrings() {
-        //    var remove = new ReturnKthToLast(); 
-        //    var c = new DoubleNode<char>('c');
-        //    var d = new DoubleNode<char>('d');
-        //    var e = new DoubleNode<char>('e');
-        //    c.previous = null;
-        //    c.next = d;
-        //    d.previous = c;
-        //    d.next = e;
-        //    e.previous = d;
-        //    e.next = null;
-        //    var expected = c;
-        //    var actual = remove.ReturnNodes(MyLinkedList(), 'c'); 
-        //}
-        //}
     }
 }
 
