@@ -23,42 +23,12 @@ namespace LinkedLists {
             }
             return 1;
         }
-
-        /*
-        This was my code before, the second ToString() method for Node<T> is from Steve's suggestion
-            missing the adding the next value
-        public string ToString() { //
-            if (next != null) {
-                return value.ToString() + " -> "; //I realized no recursion
-            }
-            return value.ToString();
-        } */
-        public string ToString() { //Steve's suggested code
+        public string ToString() {
             if (next == null) {
                 return value.ToString();
             }
             return value.ToString() + " -> " + next.ToString();
         }
-        public string ToStringWithoutIntervalCharacters() {
-            var result = "";
-            if (next == null) {
-                return value.ToString();
-            }
-            return value.ToString() + next.ToString();
-        }
-
-        //public int ToInt() {
-        //    var result = "";
-        //    var reversedResult = "";
-        //    if (next == null) {
-        //        result = value.ToString();
-        //    }
-        //    result = value.ToString() + next.ToString();
-        //    foreach (var number in result) {
-        //        reversedResult += "";
-        //    }
-        //    return int.Parse(reversedResult);
-        //}
 
         //static bool Compare<T> (T x, T y) where T : class {
         //    return x == y; 
@@ -81,6 +51,14 @@ namespace LinkedLists {
         //    //    LL = 
         //    //}
         //}
+
+        public override bool Equals(Object obj) {
+            if (obj == null || GetType() != obj.GetType()) {
+                return false;
+            }
+            Node<T> p = (Node<T>)obj;
+            return p.ToString() == this.ToString();
+        }
     }
 
     public class DoubleNode<T> {
@@ -118,49 +96,13 @@ namespace LinkedLists {
     [TestFixture]
     public class NodeTesting {
         [Test]
-        public void ToIntTesting() {
-            var myNumber = new Node<int>(8, new Node<int>(4, new Node<int>(5, new Node<int>(3, new Node<int>(2, new Node<int>(9, null))))));
-            var expected = "923548";
-            var actual = myNumber.ToStringWithoutIntervalCharacters();
-            Assert.AreEqual(expected, actual);
-        }
-        public DoubleNode<char> sampleDoubleLinkedNode() {
-            var a = new DoubleNode<char>('a');
-            var b = new DoubleNode<char>('b');
-            var c = new DoubleNode<char>('c');
-            var d = new DoubleNode<char>('d');
-            a.previous = null;
-            a.next = b;
-            b.previous = a;
-            b.next = c;
-            c.previous = b;
-            c.next = d;
-            d.previous = c;
-            d.next = null;
-            return a;
-        }
-        public DoubleNode<char> secondSampleDoubleLinkedNode() {
-            var a = new DoubleNode<char>('a');
-            var b = new DoubleNode<char>('b');
-            var c = new DoubleNode<char>('c');
-            var d = new DoubleNode<char>('d');
-            a.previous = null;
-            a.next = b;
-            b.previous = a;
-            b.next = c;
-            c.previous = b;
-            c.next = d;
-            d.previous = c;
-            d.next = null;
-            return a;
-        }
-        [Test]
-        public void EqualsTestDoubleNode() {
+        public void NodeEqualsOverride() {
+            var a = new Node<char>('a', new Node<char>('b', new Node<char>('c', null)));
+            var b = new Node<char>('a', new Node<char>('b', new Node<char>('c', null)));
             var expected = true;
-            var actual = secondSampleDoubleLinkedNode().Equals(sampleDoubleLinkedNode());
+            var actual = a.Equals(b);
             Assert.AreEqual(expected, actual);
         }
-        //these are tests for both Nodes and DoubleNodes (singly and doubly linked lists)
         [Test]
         public void CountMethodForNode() {
             var b = new Node<char>('a', new Node<char>('b', new Node<char>('c', new Node<char>('d', null))));
@@ -175,6 +117,9 @@ namespace LinkedLists {
             var actual = b.ToString();
             Assert.AreEqual(expected, actual);
         }
+    }
+    [TestFixture]
+    public class DoubleNodeTests {
         [Test]
         public void CountMethodForDoublyLinkedNodes() {
             var a = new DoubleNode<char>('a');
@@ -215,5 +160,42 @@ namespace LinkedLists {
             var actual = a.ToString();
             Assert.AreEqual(expected, actual);
         }
+        public DoubleNode<char> sampleDoubleLinkedNode() {
+            var a = new DoubleNode<char>('a');
+            var b = new DoubleNode<char>('b');
+            var c = new DoubleNode<char>('c');
+            var d = new DoubleNode<char>('d');
+            a.previous = null;
+            a.next = b;
+            b.previous = a;
+            b.next = c;
+            c.previous = b;
+            c.next = d;
+            d.previous = c;
+            d.next = null;
+            return a;
+        }
+        public DoubleNode<char> secondSampleDoubleLinkedNode() {
+            var a = new DoubleNode<char>('a');
+            var b = new DoubleNode<char>('b');
+            var c = new DoubleNode<char>('c');
+            var d = new DoubleNode<char>('d');
+            a.previous = null;
+            a.next = b;
+            b.previous = a;
+            b.next = c;
+            c.previous = b;
+            c.next = d;
+            d.previous = c;
+            d.next = null;
+            return a;
+        }
+        [Test]
+        public void EqualsTestDoubleNode() {
+            var expected = true;
+            var actual = secondSampleDoubleLinkedNode().Equals(sampleDoubleLinkedNode());
+            Assert.AreEqual(expected, actual);
+        }
+        //these are tests for both Nodes and DoubleNodes (singly and doubly linked lists)
     }
 }
