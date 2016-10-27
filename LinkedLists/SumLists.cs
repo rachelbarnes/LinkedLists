@@ -20,19 +20,18 @@ namespace LinkedLists {
             var result = 0;
             while (current != null) {
                 xInt = current.value + xInt;
-                current = current.next; //this one didn't get the 2!!!
+                current = current.next;
             }
             current = Y;
             while (current != null) {
                 yInt = current.value + yInt;
-                current = current.next; //this one didn't get the 3!!! , so
+                current = current.next;
             }
-            //var resultString = (xInt + yInt).ToString(); 
             result = int.Parse(xInt) + int.Parse(yInt);
             Node<int> z = null;
-            foreach (var num in result.ToString()) { //having the ToString() here does something different than above in line 30
+            foreach (var num in result.ToString()) {
                 z = new Node<int> {
-                    value = Int32.Parse(num.ToString()),
+                    value = Int32.Parse(num.ToString()), //this Int32.Parse is what changed when it was giving me ASCII number equivalents to my numbers... 
                     next = z,
                 }; 
             }
@@ -54,7 +53,15 @@ namespace LinkedLists {
             var expected = new Node<int>(3, new Node<int>(0, new Node<int>(8, new Node<int>(6, null))));
             var actual = sum.SumLinkedLists(x, y);
             Assert.AreEqual(expected, actual);
-
+        }
+        [Test]
+        public void SumTwoLinkedListsAgain() {
+            var sum = new SumLists(); 
+            var a = new Node<int>(3, new Node<int>(8, new Node<int>(3, new Node<int>(9, new Node<int>(7, new Node<int>(9, null))))));
+            var b = new Node<int>(4, null);
+            var expected = new Node<int>(7, new Node<int>(8, new Node<int>(3, new Node<int>(9, new Node<int>(7, new Node<int>(9, null))))));
+            var actual = sum.SumLinkedLists(a, b);
+            Assert.AreEqual(expected, actual); 
         }
     }
 }
