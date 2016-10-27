@@ -54,6 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemoveDups.cs" />
     <Compile Include="ReturnKthToLast.cs" />
+    <Compile Include="SumLists.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
