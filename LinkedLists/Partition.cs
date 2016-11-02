@@ -37,6 +37,9 @@ namespace LinkedLists {
 
                 I'm guessing that in order to add the partition nodes at the end of the linked list, I need to link them the previous nodes, and thus needing a DoubleNode? 
                     try a singly linked list first 
+
+
+            I realized that this algorithm only accounts for one instance of the partition value in a linked list... that is something I have to account for when redoing this one
         */
 
         public DoubleNode<int> PartitionDoublyLL(DoubleNode<int> n, int partition) {
@@ -53,14 +56,13 @@ namespace LinkedLists {
                     n = n.next;
                 }
                 if (n.next == null) {
+                    //this is where I still have to mend some of my work, this only accounts for one of the nodes contianing the partition value, where there could be many
                     if (count == 1) {
-                        //if (count != 0) {
                         count--;
                         partitionTail.value = partition;
                         n.next = partitionTail;
                         partitionTail.next = null;
-                        while (n.previous != null) { //i wasn't expecting to have to do this while loop, 
-                                //but this is what allowed me to be successful in connecting this node to all the previous nodes. 
+                        while (n.previous != null) { 
                             partitionTail.previous = n;
                             n = n.previous; 
                         }
