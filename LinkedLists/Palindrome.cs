@@ -36,40 +36,20 @@ namespace LinkedLists {
             }
             return b;
         }
+        // is there a way to do this with strings? I do feel like it would be cheating, 
+            //but if nothing else, just to get a move on. I've been doing this same problem for days
+
+        //for the sake of time, i need to do this with strings... 
+            //i feel like this is cheating, but would it be "cheating" more if I translated the strings in arrays, or lists? dictionaries won't work because they're not evlauated
+                //necessarily in an in order basis... there's no formal order. maybe just putting them in lists would be more direct... 
+                    //we did the ToString() to make it easier to see... so i don't know where i stand on this. 
+
 
         //public DoubleNode<char> ReverseLinkedList(DoubleNode<char> a) {
-        //    var head = new DoubleNode<char>();
-        //    var secondA = a; 
-        //    while (a != null) {
-        //        head.value = a.value;
-        //        head.next = a.previous;
-        //        head.previous = null; 
-        //        if (a.next == null) { //so if going bakcwards on a doesn't work becasue we remove the node from memory, then let's assemble the head backwards
+        //    var head = new DoubleNode<char>(); 
 
-        //            while (a.previous != null) { //as soon as I get here... i get a null reference point
-        //                a.previous = head.next;
-        //                head = head.next;
-        //                a = a.previous;
-        //            }
-        //        }
-        //        a = a.next; 
-        //    }
-        //    return head;
         //}
 
-        public DoubleNode<char> ReverseLinkedList(DoubleNode<char> a) {
-            var head = new DoubleNode<char>(); 
-             
-        }
-
-        //public bool AmIAPalindrome(DoubleNode<char> a) {
-        //    bool AmI;
-        //    var head = new DoubleNode<char>(); //creating a new linked list of a/2, in effort to reverse that list
-        //    var b = CreateANewLinkedListAtHalfwayPoint(a);
-        //    while (b != null) {
-        //        if (b.next == null)
-        //    }
-        //}
         //    public bool AmIAPalindrome(DoubleNode<char> a) {
         //        bool AmI;
         //        int countSimilarities = 0;
@@ -105,6 +85,7 @@ namespace LinkedLists {
         //    if (countOfNodes % 2 != 0) {
         //        //if the count is odd, divide the number, and round up. 
         //        //
+
     }
     [TestFixture]
     public class PalindromeTests {
@@ -231,13 +212,13 @@ namespace LinkedLists {
             Assert.AreEqual(expected, actual);
         }
 
-        [Test]
-        public void ReverseLinkedListTest() {
-            var pal = new Palindrome();
-            var expected = ReversePartOfX();
-            var actual = pal.ReverseLinkedList(PartOfX());
-            Assert.AreEqual(expected, actual);
-        }
+        //[Test]
+        //public void ReverseLinkedListTest() {
+        //    var pal = new Palindrome();
+        //    var expected = ReversePartOfX();
+        //    var actual = pal.ReverseLinkedList(PartOfX());
+        //    Assert.AreEqual(expected, actual);
+        //}
         //[Test]
         //public void EvenNumberPalindrome() {
         //    var pal = new Palindrome();
@@ -268,3 +249,4 @@ namespace LinkedLists {
         //}
     }
 }
+

@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="CodeSamplesFromCTCI.cs" />
     <Compile Include="DeleteMiddleNode.cs" />
+    <Compile Include="DoubleNode.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Palindrome.cs" />
     <Compile Include="Partition.cs" />
