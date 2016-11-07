@@ -30,6 +30,7 @@ namespace LinkedLists {
             return value.ToString() + " -> " + next.ToString();
         }
 
+
         /*
         static bool Compare<T>(T x, T y) where T : class {
             return x == y;

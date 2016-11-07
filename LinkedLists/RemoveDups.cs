@@ -13,11 +13,11 @@ namespace LinkedLists {
             var dict = new Dictionary<char, int>();
             if (n.next != null) {
                 var currentValue = n.value;
-                if (!dict.Keys.Contains(currentValue)) {
-                    dict.Add(currentValue, 1);
-                }
                 if (dict.Keys.Contains(currentValue)) {
                     dict[currentValue] = dict[currentValue] + 1;
+                }
+                if (!dict.Keys.Contains(currentValue)) {
+                    dict.Add(currentValue, 1);
                 }
             }
             foreach (KeyValuePair<char, int> pair in dict) {
@@ -37,6 +37,16 @@ namespace LinkedLists {
             var expected = new Node<char>('a', new Node<char>('b', new Node<char>('c', new Node<char>('d', null)))).ToString();
             var actual = remove.RemoveDuplicateNodes(n).ToString();
             Assert.AreEqual(expected, actual);
+        }
+        //the RemoveDuplicateNodes() is not correct at all... I have no idea why it's passing... 
+            //ok good, this was just a fluke
+        [Test]
+        public void RemoveDuplicateNodes2() {
+            var remove = new RemoveDups(); 
+            var n = new Node<char>('a', new Node<char>('a', new Node<char>('b', new Node<char>('c', new Node<char>('d', new Node<char>('a', new Node<char>('b', null)))))));
+            var expected = new Node<char>('a', new Node<char>('b', new Node<char>('c', new Node<char>('d', null)))).ToString();
+            var actual = remove.RemoveDuplicateNodes(n).ToString(); 
+            Assert.AreEqual(expected, actual); 
         }
     }
 }

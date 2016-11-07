@@ -33,11 +33,12 @@ namespace LinkedLists {
         }
         public List<char> ReverseList(List<char> n) {
             var copy = new List<char>();
-            copy = n; 
-            //var copy = new List<char> { 'a', 'b', 'c', 'd' }; 
+            foreach (var val in n) {
+                copy.Add(val);
+            }; //using a foreach here, i got diff results from assiging n to a copy than using the foreach...
+                //when i didn't use a foreach, as n is manipulated in the for loop below, copy was also manipulated, despite being instantiated before
             for (int i = 0, j = n.Count() - 1; i < n.Count(); i++, j--) {
-                n[i] = copy[j]; //that's what i figured... this would double back on itself... 
-                //so why is copy going back on itself? shouldn't it remain immutable since it was declared before this loop? 
+                n[i] = copy[j];
             }
             return n;
         }
