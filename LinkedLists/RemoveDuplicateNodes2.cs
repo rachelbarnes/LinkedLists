@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 namespace LinkedLists {
     public class RemoveDuplicateNodes2 {
-        public Node<char> RemoveDuplicateNodes(Node<char> n) {
+        public Node<char> RemoveDuplicateNodes(Node<char> head) {
             var list = new List<char>();
-            Node<char> previous = n;
-            Node<char> ret = n; 
-            while (n != null) {
-                if (!list.Contains(n.value)) {
-                    list.Add(n.value);
-                    previous = n;
+            Node<char> previous = null;
+            Node<char> current = head;
+            while (current != null) {
+                if (!list.Contains(current.value)) {
+                    list.Add(current.value);
+                    previous = current;
+                    //prev and current and head are all pointing to the same address...
                 } else {
-                    previous.next = n.next;
-                    //creating a new link to the next node... in this case, b2 gets ignored... draw this out and look at it 
+                    previous.next = current.next;
                 }
-                    n = n.next; 
+                current = current.next; //prev is hte first node, current is the second
             }
-            return ret;
+            return head;
         }
     }
     [TestFixture]
@@ -62,12 +62,12 @@ namespace LinkedLists {
 //    a = a.next; 
 //}
 
-            //Node<char> a = null;
-            //list.Reverse();
-            //foreach (var element in list) {
-            //    var current = new Node<char>() {
-            //        value = element,
-            //        next = a,
-            //    };
-            //    a = current;
-            //}
+//Node<char> a = null;
+//list.Reverse();
+//foreach (var element in list) {
+//    var current = new Node<char>() {
+//        value = element,
+//        next = a,
+//    };
+//    a = current;
+//}
