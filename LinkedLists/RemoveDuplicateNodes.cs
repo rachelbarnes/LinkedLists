@@ -3,35 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NUnit.Framework; 
+using NUnit.Framework;
+
 namespace LinkedLists {
     public class RemoveDuplicateNodes {
         public string RemoveDupNodes(Cell<char> n) {
             var list = new List<char>();
-            while (n != null) { 
-                if (!list.Contains(n.value)) {
-                    list.Add(n.value);
+            Cell<char> previous = null;
+            var current = n;
+            while (current != null) {
+                if (!list.Contains(current.value)) {
+                    list.Add(current.value);
+                    previous = current;//note the imptce of having the previous = current here, as opposed to at the end of the hwile loop and at the end of the else
+                } else { 
+                    previous/*a1*/.next = current/*a2*/.next /*b*/;
                 }
-                n = n.next; 
+                current = current.next;
             }
-            Cell<char> a = null; //note to self, this has to be null... 
-            foreach (var item in list) {
-                a = new Cell<char> {
-                    value = item,
-                    next = a //this is a good point of recursion... it's actually setting up what's goin on in the tests... 
-                             //value is the value, next is null. if there's another item in the list, then the next item is assigned to another node,
-                             //and the link is null, and continues through the list of items in teh foreach loop, but when the foreach is done, there is no link, so a being delcared null in line 17 is > impt than it looks
-                };
-            }
-            Cell<char> b = null; // new Cell<char>();//  = null; 
-            while (a != null) {
-                b = new Cell<char> {
-                    value = a.value,
-                    next = b
-                };
-                a = a.next; 
-            }
-                return b.PrintCellRec();
+            return n.PrintCellRec(); 
         }
     }
 
@@ -40,10 +29,34 @@ namespace LinkedLists {
         [Test]
         public void RemoveDupsTest() {
             var rem = new RemoveDuplicateNodes();
-            var n = new Cell<char>('a', new Cell<char>('b', new Cell<char>('a', new Cell<char>('b', new Cell<char>('c', new Cell<char>('d', new Cell<char>('a', null))))))); 
+            var n = new Cell<char>('a', new Cell<char>('b', new Cell<char>('a', new Cell<char>('b', new Cell<char>('c', new Cell<char>('d', new Cell<char>('a', null)))))));
             var expected = "a -> b -> c -> d";
             var actual = rem.RemoveDupNodes(n);
-            Assert.AreEqual(expected, actual); 
+            Assert.AreEqual(expected, actual);
+        }
+        [Test]
+        public void RemoveDupsTest2() {
+            var rem = new RemoveDuplicateNodes();
+            var n = new Cell<char>('a', new Cell<char>('b', new Cell<char>('a', new Cell<char>('b', new Cell<char>('c', new Cell<char>('d', new Cell<char>('a', new Cell<char>('b', new Cell<char>('r', new Cell<char>('e', new Cell<char>('f', new Cell<char>('f', null))))))))))));
+            var expected = "a -> b -> c -> d -> r -> e -> f";
+            var actual = rem.RemoveDupNodes(n);
+            Assert.AreEqual(expected, actual);
         }
     }
 }
+//Cell<char> a = null; //note to self, this has to be null... 
+//foreach (var item in list) {
+//    a = new Cell<char> {
+//        value = item,
+//        next = a 
+//    };
+//}
+//Cell<char> b = null; // new Cell<char>();//  = null; 
+//while (a != null) {
+//    b = new Cell<char> {
+//        value = a.value,
+//        next = b
+//    };
+//    a = a.next; 
+//}
+//    return b.PrintCellRec();
