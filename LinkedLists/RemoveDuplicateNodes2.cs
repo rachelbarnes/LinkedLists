@@ -22,6 +22,7 @@ namespace LinkedLists {
             }
             return head;
         }
+        //do this with 2 different goals in mind: one with duplicates all throughout the list (random), and one where they're sorted alphabetically (with char)s
     }
     [TestFixture]
     public class RemoveDupTests {

@@ -55,11 +55,11 @@
     <Compile Include="Partition.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemoveDuplicateNodes.cs" />
     <Compile Include="RemoveDuplicateNodes2.cs" />
     <Compile Include="RemoveDups.cs" />
-    <Compile Include="RemoveDups2.cs" />
+    <Compile Include="Cell.cs" />
     <Compile Include="ReturnKthToLast.cs" />
-    <Compile Include="ReturnKthToLastNode2.cs" />
     <Compile Include="SumLists.cs" />
   </ItemGroup>
   <ItemGroup>
